@@ -66,7 +66,7 @@ PROXY_LIST = [
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 DOWNLOADER_MIDDLEWARES = {
     'spiders.middlewares.SpidersDownloaderMiddleware': None,
-    'spiders.middlewares.RandomProxyMiddleware': None,
+    'spiders.middlewares.RandomProxyMiddleware': 500,
 }
 
 # Enable or disable extensions

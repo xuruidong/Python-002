@@ -4,15 +4,13 @@ from scrapy.selector import Selector
 class MaoyanSpider(scrapy.Spider):
     name = 'maoyan'
     allowed_domains = ['maoyan.com', 'httpbin.org', 'baidu.com']
-    # start_urls = ['https://maoyan.com/films?showType=3']
-    #start_urls = ['http://httpbin.org/ip']
-    #start_urls = ['http://www.baidu.com']
-    start_urls = ['http://127.0.0.1/maoyan.html']
+    start_urls = ['https://maoyan.com/films?showType=3']
+    # start_urls = ['http://httpbin.org/ip']
+    # start_urls = ['http://www.baidu.com']
+    # start_urls = ['http://127.0.0.1/maoyan.html']
 
     def parse(self, response):
         items = []
-        print ("++++++++++++++++")
-        #print (response.text)
         films = Selector(response).xpath(
             '//div[@class="movie-item film-channel"]')
         for film_selector in films[:10]:
@@ -31,6 +29,5 @@ class MaoyanSpider(scrapy.Spider):
             item['date'] = s_date.extract()[1].strip()
             items.append(item)
             
-            # print ("==================")
-            
+
         return items
