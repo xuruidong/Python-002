@@ -50,7 +50,13 @@ if __name__ == '__main__':
 
     # r = map(square, 5)
     r = map(square, range(5))
+    # for i in r:
+    #    print (i)
+    # print (next(r))
     print (list(r))
 
-    new_sleep = timer(time.sleep)
-    new_sleep(1)
+    @timer
+    def test_func(*args, **kwargs):
+        time.sleep(1.5)
+
+    test_func()
