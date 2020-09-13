@@ -17,13 +17,16 @@ collections.deque
 """
 
 '''
+容器序列: list, tuple, dict, collections.deque
 扁平序列: str
-可变序列: list, str, dict, collections.deque
-不可变序列: tuple
+可变序列: list, dict, collections.deque
+不可变序列: tuple, str
 '''
 
 def map(func, iterables):
-    print (iterables)
+    if (not hasattr(iterables, '__iter__')):
+        raise(TypeError("'int' object is not iterable"))
+    
     for it in iterables:
         yield func(it)
 
@@ -44,7 +47,8 @@ def timer(func):
 if __name__ == '__main__':
     def square(x):
         return x**2
-    
+
+    # r = map(square, 5)
     r = map(square, range(5))
     print (list(r))
 
